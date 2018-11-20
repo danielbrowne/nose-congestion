@@ -58,12 +58,6 @@ class CongestionPlugin(Plugin):
                 new_f = self.record_elapsed_decorator(old_f, ctx, k)
                 setattr(context, k, new_f)
 
-        if hasattr(context, 'setup_class'):
-            for k in ('setup_class', 'teardown_class'):
-                old_f = getattr(context, k)
-                new_f = self.record_elapsed_decorator(old_f, ctx, k)
-                setattr(context, k, new_f)
-
         self.start_times[context] = time()
 
     def stopContext(self, context):
